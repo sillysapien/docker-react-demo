@@ -9,3 +9,11 @@ services:
     volumes:
       - /app/node_modules # do not try to map node_modules from container
       - .:/app # current folder outside the container to /app folder in container 
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"] # Primary startup command
