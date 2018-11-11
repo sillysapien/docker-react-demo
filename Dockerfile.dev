@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+# For custom files, docker build -f Dockerfile.dev .
+# can take a while for node_modules to be installed the first-time
