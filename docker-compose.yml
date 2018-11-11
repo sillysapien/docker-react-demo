@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: # . assumes we have dockerfile in working dir. so, use below
+      context: . # source files. if he had src nested then ./src
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    volumes:
+      - /app/node_modules # do not try to map node_modules from container
+      - .:/app # current folder outside the container to /app folder in container 
